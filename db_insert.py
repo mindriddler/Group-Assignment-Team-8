@@ -44,7 +44,7 @@ except sqlite3.Error as error:
 except FileNotFoundError as error2:
     print("Wrong path specified -", error2)
  
-
+# I didnt like it when the console was filled with error text so i made a few more try/except to intercept all of the possible errors
 try:
     if sqliteConnection:
         sqliteConnection.close()
