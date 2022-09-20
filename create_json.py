@@ -36,5 +36,5 @@ persons = {
 }
 
 
-with open(r'C:\\users\fredr\desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\data\persons.json', 'w') as f:
+with open(r'C:\\users\Fredrik\desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\data\persons.json', 'w') as f:
     f.write(json.dumps(persons, indent=4))
