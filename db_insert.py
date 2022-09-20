@@ -1,8 +1,14 @@
 import sqlite3
 import csv
 
-file_path = input("Please enter the file path: ")
-# r"C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\data\persons.csv"
+
+
+# Path to csv file. Important to write it as C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\data\persons.csv" 
+# Otherwise it might not work. You will need to specify your path to your copy of the file ofcourse
+
+file_path = input("Please enter the file path: ") 
+db_path = input("Please enter the path to the DB: ")
+# C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\data\persons.csv
 
 try:
   
@@ -15,7 +21,7 @@ try:
   
     # Connect to SQLite. 
     # This creates the connection to the database, which is needed to make changes to it. Its not the same as writing a textfile or w/e
-    sqliteConnection = sqlite3.connect(r"C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\db\SQLiteDB.db")
+    sqliteConnection = sqlite3.connect(db_path)
     cursor = sqliteConnection.cursor()
   
     # Create the table 
