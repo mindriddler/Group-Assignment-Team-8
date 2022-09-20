@@ -1,0 +1,34 @@
+{
+    "persons": [
+        {
+            "firstname": "pelle",
+            "lastname": "svensson",
+            "birthdate": "94-02-15",
+            "address": "lillgatangatan 4"
+        },
+        {
+            "firstname": "nina",
+            "lastname": "bengtsson",
+            "birthdate": "99-02-02",
+            "address": "storgatan 4"
+        },
+        {
+            "firstname": "nisse",
+            "lastname": "svensson",
+            "birthdate": "67-04-12",
+            "address": "bergsv\u00e4gen 11"
+        },
+        {
+            "firstname": "johan",
+            "lastname": "persson",
+            "birthdate": "94-07-15",
+            "address": "inteckningsv\u00e4gen 1"
+        },
+        {
+            "firstname": "karl",
+            "lastname": "nilsson",
+            "birthdate": "84-02-27",
+            "address": "sedelv\u00e4gen 5"
+        }
+    ]
+}
