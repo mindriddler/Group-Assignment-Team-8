@@ -1,21 +1,22 @@
 import csv
 import sys
 import sqlite3
-from _classes import Person
 from _classes import clazz
 
 class Greetings:
     def __init__(self, name):
         self.name = name
 
-    def list_all_persons(self):
-        clazz() # I have now made it so instead of writing the code here again, we are now instead
-                # calling for this function which will get us all the entrys in the database printed to the terminal
 
-        # with open(r'C:\\users\Fredrik\desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\data\persons.csv') as f:
-            # reader = csv.reader(f)
-            # for row in reader:
-                # print(row)
+    # I have now made it so instead of writing the code here again, we are now instead
+    # calling for the function clazz() directly from the choice menu
+    # That means that this function sadly is unnecessary
+    """def list_all_persons(self):
+        sqliteConnection = sqlite3.connect(r"C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\db\SQLiteDB.db")
+        cursor = sqliteConnection.cursor()
+        cursor.execute("SELECT * from persons;")
+        full_list = cursor.fetchall()
+        print(full_list)"""
 
     def delete_a_person(self):                                                                                                               ## Delete OK?
         choice2 = input("Who do you want to delete?: ")
@@ -50,6 +51,10 @@ class Menu:
 4: 'Quit'
 """
 
+
+# We need to fix kinda everything here at some point, because "greeting" is looking abit
+# out of place
+
     def __init__(self, greeting):
         self.greeting = greeting
 
@@ -60,7 +65,7 @@ class Menu:
         if choice == 4:
             self.running = False
         elif choice == 1:
-            self.greeting.list_all_persons()
+            clazz()
         elif choice == 2:
             self.greeting.delete_a_person()
         elif choice == 3:

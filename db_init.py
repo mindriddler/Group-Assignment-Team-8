@@ -7,9 +7,6 @@ import csv
 def file_input():
     file_path = input("Please enter the file path: ") 
     return file_path
-# def db_input():   
-#     db_path = input("Please enter the path to the DB: ")
-#     return db_path
 
 def conn_to_db(filename):
     return sqlite3.connect(filename)
@@ -39,8 +36,10 @@ def insert_to_db(connection):
     # And this is where the data from the persons.csv file get imported
     connection.executemany('INSERT OR IGNORE INTO persons (id, firstname, lastname, birthdate, address) VALUES (?, ?, ?, ?, ?);', import_csv_file())
     connection.commit()
-            
-def execute_select(cursor):
+
+
+# Code not in use as for now, removing at a later date if its not needed again           
+"""def execute_select(cursor):
     # Show the table
     result = cursor.execute('SELECT * FROM persons')
     return result
@@ -48,26 +47,20 @@ def execute_select(cursor):
 def print_fetch_all(result): 
      # View result. Remove comment to print data from the DB
     for all in result:
-        print(all)
+        print(all)"""
 
- 
-# I didnt like it when the console was filled with error text so i made a few more try/except to intercept all of the possible errors
 def close_connection(connection):
     if connection:
         connection.close()
         print('SQLite Connection closed')
 
      
-    
-    
 def main():
     with conn_to_db('db\SQLiteDB.db') as conn:
         print("Connection to SQL open.")
         cursor(conn)
         create_table(conn)
         insert_to_db(conn)
-        # execute_select(cursor(conn))
-        # print_fetch_all(execute_select(conn))
     close_connection(conn)
     
     

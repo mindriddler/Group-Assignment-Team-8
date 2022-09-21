@@ -68,9 +68,6 @@ class Person:
         
 def clazz():
     with db_init.conn_to_db('db\SQLiteDB.db') as conn:
-        # print("Connection to SQL open.")
         db_init.cursor(conn)
-        # getlimitedRows(conn, 6)
-        # print_one(conn)
         Person.people_print(conn)
     db_init.close_connection(conn)
