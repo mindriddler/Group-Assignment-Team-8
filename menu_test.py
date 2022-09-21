@@ -1,18 +1,16 @@
 import csv
 import sys
 import sqlite3
-
+from _classes import Person
+from _classes import clazz
 
 class Greetings:
     def __init__(self, name):
         self.name = name
 
     def list_all_persons(self):
-        sqliteConnection = sqlite3.connect(r"C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\db\SQLiteDB.db")
-        cursor = sqliteConnection.cursor()
-        cursor.execute("SELECT * from persons;")
-        full_list = cursor.fetchall()
-        print(full_list)
+        clazz() # I have now made it so instead of writing the code here again, we are now instead
+                # calling for this function which will get us all the entrys in the database printed to the terminal
 
         # with open(r'C:\\users\Fredrik\desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\data\persons.csv') as f:
             # reader = csv.reader(f)
@@ -21,13 +19,10 @@ class Greetings:
 
     def delete_a_person(self):                                                                                                               ## Delete OK?
         choice2 = input("Who do you want to delete?: ")
-
         try:
-            # del self.name
-            sqliteConnection = sqlite3.connect(r"C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\db\SQLiteDB.db")
+            sqliteConnection = sqlite3.connect('db\SQLiteDB.db')
             cursor = sqliteConnection.cursor()
-            # delete_user = str(input("Who do you want to delete?: "))
-            delete_query = ("DELETE from persons WHERE `firstname` = ?")
+            delete_query = ("DELETE from persons WHERE `firstname` = ?").title()
             cursor.execute(delete_query, (choice2,))
             sqliteConnection.commit()
             print("Entry Deleted")
