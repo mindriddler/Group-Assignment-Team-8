@@ -1,32 +1,35 @@
 import csv
 import sys
 import sqlite3
-from db_init import conn_to_db, cursor, close_connection
-from _classes import getlimitedRows
 
 
-class App:
-    def __init__(self):
-        pass
+class Greetings:
+    def __init__(self, name):
+        self.name = name
 
-    # def conn_to_db(filename):
-    #     return sqlite3.connect(filename)
-    #     # with open(r'C:\\users\Fredrik\desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\data\persons.csv') as f:
-    #         # reader = csv.reader(f)
-    #         # for row in reader:
-    #             # print(row)
+    def list_all_persons(self):
+        sqliteConnection = sqlite3.connect(r"C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\db\SQLiteDB.db")
+        cursor = sqliteConnection.cursor()
+        cursor.execute("SELECT * from persons;")
+        full_list = cursor.fetchall()
+        print(full_list)
+
+        # with open(r'C:\\users\Fredrik\desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\data\persons.csv') as f:
+            # reader = csv.reader(f)
+            # for row in reader:
+                # print(row)
 
     def delete_a_person(self):                                                                                                               ## Delete OK?
         choice2 = input("Who do you want to delete?: ")
-        
+
         try:
             # del self.name
-            conn = sqlite3.connect('db\SQLiteDB.db')
-            cursor = conn.cursor()
+            sqliteConnection = sqlite3.connect(r"C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\db\SQLiteDB.db")
+            cursor = sqliteConnection.cursor()
             # delete_user = str(input("Who do you want to delete?: "))
             delete_query = ("DELETE from persons WHERE `firstname` = ?")
             cursor.execute(delete_query, (choice2,))
-            conn.commit()
+            sqliteConnection.commit()
             print("Entry Deleted")
             cursor.close()
         except AttributeError:
@@ -52,8 +55,8 @@ class Menu:
 4: 'Quit'
 """
 
-    def __init__(self) -> None:
-        pass
+    def __init__(self, greeting):
+        self.greeting = greeting
 
     def user_input(self):
         return int(input("Enter your choice [1-4]: "))
@@ -62,12 +65,11 @@ class Menu:
         if choice == 4:
             self.running = False
         elif choice == 1:
-            getlimitedRowssize = int(input("How many rows to you want to show?: "))
-            getlimitedRows(conn_to_db('db\SQLiteDB.db'), getlimitedRowssize)
+            self.greeting.list_all_persons()
         elif choice == 2:
-            App().delete_a_person()
+            self.greeting.delete_a_person()
         elif choice == 3:
-            App.update_a_persons_address()
+            self.greeting.update_a_persons_address()
 
     def menu_loop(self):
         self.running = True
@@ -77,15 +79,6 @@ class Menu:
             self.menu_choice(choice)
 
 
-def main2():
-    with conn_to_db('db\SQLiteDB.db') as conn:
-        cursor(conn)
-        Menu().menu_loop()
-    close_connection(conn)
-
-
-
-
 if __name__ == '__main__':
-    main2()
-    
+    greeting = Greetings('Eva')
+    Menu(greeting).menu_loop()
