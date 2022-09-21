@@ -16,7 +16,7 @@ try:
     # Basicly open up the CSV file and importing the raw text into the DB
     with open(file_path, 'r') as fin:
         dict_reader = csv.DictReader(fin)
-        persons = [(i['Firstname'], i['Lastname'], i["Birthdate"], i["Address"]) for i in dict_reader]
+        persons = [(i['Index'], i['Firstname'], i['Lastname'], i["Birthdate"], i["Address"]) for i in dict_reader]
         # print(persons)
   
     # Connect to SQLite. 
@@ -24,37 +24,40 @@ try:
     sqliteConnection = sqlite3.connect(db_path)
     cursor = sqliteConnection.cursor()
   
-    # Create the table 
-    # This is where we create the table
-    # cursor.execute('create table persons(firstname, lastname , birthdate, address);')
+    # Remove comment to create table, but after the table is created, comment this line back
+    # This is where we create the table.
+    cursor.execute('create table persons (`index`, firstname, lastname, birthdate, address);')
   
-    # Insert data into table. 
+    # Remove comment to insert data, but after the data is inserted, comment this line back 
     # And this is where the data from the persons.csv file get imported
-    # cursor.executemany("insert into persons (firstname, lastname , birthdate, address) VALUES (?, ?, ?, ?);", persons)
+    cursor.executemany("insert into persons (`index`, firstname, lastname, birthdate, address) VALUES (?, ?, ?, ?, ?);", persons)
   
     # Show the table
     cursor.execute('select * from persons;')
   
-    # View result
+    # View result. Remove comment to print data from the DB
     result = cursor.fetchall()
     print(result)
   
     # Commit work and close connection. 
     # Think Git :') 
-    # We need to commit our changes to the database for it in order for it to get updated weith the new information
-    sqliteConnection.commit()
+    # We need to commit our changes to the database for it in order for it to get updated with the new information
+    # If we want to make sure that our changes get commited to the database,
+    # we can just add sqliteConnection.commit() after each execute command that changes stuff
+    
+    sqliteConnection.commit() 
     cursor.close()
     
-except sqlite3.Error as error:
-        print('Error occured - ', error)
+# except sqlite3.Error as error:
+        # print('Error occured - ', error)
 except FileNotFoundError as error2:
     print("Wrong path specified -", error2)
  
 # I didnt like it when the console was filled with error text so i made a few more try/except to intercept all of the possible errors
-try:
-    if sqliteConnection:
-        sqliteConnection.close()
-        print('SQLite Connection closed')
-except NameError as error3:
-    print("Wrong path specified -", error3)
+# try:
+    # if sqliteConnection:
+        # sqliteConnection.close()
+        # print('SQLite Connection closed')
+# except NameError as error3:
+    # print("Wrong path specified -", error3)
     

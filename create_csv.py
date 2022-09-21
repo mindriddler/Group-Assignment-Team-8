@@ -2,34 +2,39 @@ import csv
 
 persons = [
     {
-        "firstname": "pelle",
-        "lastname": "svensson",
-        "birthdate": "94-02-15",
-        "address": "lillgatangatan 4"
+        "Index": 1,
+        "Firstname": "pelle",
+        "Lastname": "svensson",
+        "Birthdate": "94-02-15",
+        "Address": "lillgatangatan 4"
     },
         {
-        "firstname": "nina",
-        "lastname": "bengtsson",
-        "birthdate": "99-02-02",
-        "address": "storgatan 4"
+        "Index": 2,
+        "Firstname": "nina",
+        "Lastname": "bengtsson",
+        "Birthdate": "99-02-02",
+        "Address": "storgatan 4"
     },
         {
-        "firstname": "nisse",
-        "lastname": "svensson",
-        "birthdate": "67-04-12",
-        "address": "bergsvägen 11"
+        "Index": 3,
+        "Firstname": "nisse",
+        "Lastname": "svensson",
+        "Birthdate": "67-04-12",
+        "Address": "bergsvägen 11"
     },
         {
-        "firstname": "johan",
-        "lastname": "persson",
-        "birthdate": "94-07-15",
-        "address": "inteckningsvägen 1"
+        "Index": 4,
+        "Firstname": "johan",
+        "Lastname": "persson",
+        "Birthdate": "94-07-15",
+        "Address": "inteckningsvägen 1"
     },
         {
-        "firstname": "karl",
-        "lastname": "nilsson",
-        "birthdate": "84-02-27",
-        "address": "sedelvägen 5"
+        "Index": 5,
+        "Firstname": "karl",
+        "Lastname": "nilsson",
+        "Birthdate": "84-02-27",
+        "Address": "sedelvägen 5"
     },    
 ] 
 
