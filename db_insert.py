@@ -26,18 +26,18 @@ try:
   
     # Create the table 
     # This is where we create the table
-    cursor.execute('create table persons(firstname, lastname , birthdate, address);')
+    # cursor.execute('create table persons(firstname, lastname , birthdate, address);')
   
     # Insert data into table. 
     # And this is where the data from the persons.csv file get imported
-    cursor.executemany("insert into persons (firstname, lastname , birthdate, address) VALUES (?, ?, ?, ?);", persons)
+    # cursor.executemany("insert into persons (firstname, lastname , birthdate, address) VALUES (?, ?, ?, ?);", persons)
   
     # Show the table
     cursor.execute('select * from persons;')
   
     # View result
-    # result = cursor.fetchall()
-    # print(result)
+    result = cursor.fetchall()
+    print(result)
   
     # Commit work and close connection. 
     # Think Git :') 
