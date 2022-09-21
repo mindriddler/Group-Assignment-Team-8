@@ -23,8 +23,8 @@ This is probably your first slightly larger program, so you will tackle it as a 
 ### `Exercise 3` Menu
 
 1. Create a menu with options:
-   1. Load data from file (Use your solution from Exercise 1)
-   2. List all persons (select *) (Use your solution from Exercise 2)
+   1. ~~Load data from file (Use your solution from Exercise 1)~~
+   2. ~~List all persons (select *) (Use your solution from Exercise 2)~~
       1. EXTRA let the user type a firstname and query the database with that firstname
       2. EXTRA let the user type a lastname and query the database with that lastname
       3. EXTRA let the user type a birthdate and query query the database with that birthdate
