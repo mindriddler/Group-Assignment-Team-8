@@ -22,21 +22,21 @@ def cursor(connection):
 def import_csv_file():  
     # Import csv and extract data, this is where we need to start. 
     # Basicly open up the CSV file and importing the raw text into the DB
-    with open(file_input(), 'r') as fin:
+    with open(file_input(), 'r', encoding='UTF-8', newline='') as fin:
         dict_reader = csv.DictReader(fin)
-        persons = [(i['Index'], i['Firstname'], i['Lastname'], i["Birthdate"], i["Address"]) for i in dict_reader]
+        persons = [(i['id'], i['Firstname'], i['Lastname'], i["Birthdate"], i["Address"]) for i in dict_reader]
         return persons
             
 def create_table(connection):
     # Remove comment to create table, but after the table is created, comment this line back
     # This is where we create the table.
-    connection.execute('CREATE TABLE IF NOT EXISTS persons (`index`, firstname, lastname, birthdate, address, CONSTRAINT name_unique UNIQUE (firstname, lastname, address));')
+    connection.execute('CREATE TABLE IF NOT EXISTS persons (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, firstname, lastname, birthdate, address, CONSTRAINT name_unique UNIQUE (firstname, lastname, address));')
     connection.commit()
             
 def insert_to_db(connection): 
     # Remove comment to insert data, but after the data is inserted, comment this line back 
     # And this is where the data from the persons.csv file get imported
-    connection.executemany('INSERT OR IGNORE INTO persons (`index`, firstname, lastname, birthdate, address) VALUES (?, ?, ?, ?, ?);', import_csv_file())
+    connection.executemany('INSERT OR IGNORE INTO persons (id, firstname, lastname, birthdate, address) VALUES (?, ?, ?, ?, ?);', import_csv_file())
     connection.commit()
             
 def execute_select(cursor):
@@ -66,7 +66,7 @@ def main():
         create_table(conn)
         insert_to_db(conn)
         # execute_select(cursor(conn))
-        print_fetch_all(execute_select(conn))
+        # print_fetch_all(execute_select(conn))
     close_connection(conn)
     
     

@@ -1,4 +1,4 @@
-import db_insert
+import db_init
 
 # def print_one(connection):   
 #     cursor = connection.cursor()
@@ -43,10 +43,10 @@ class Person:
 
 
 def clazz():
-    with db_insert.conn_to_db('db\SQLiteDB.db') as conn:
+    with db_init.conn_to_db('db\SQLiteDB.db') as conn:
         # print("Connection to SQL open.")
-        db_insert.cursor(conn)
+        db_init.cursor(conn)
         getlimitedRows(conn, 6)
         # print_one(conn)
         # make_func_to_str_and_print(conn)
-    db_insert.close_connection(conn)
+    db_init.close_connection(conn)
