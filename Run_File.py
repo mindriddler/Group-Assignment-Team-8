@@ -1,10 +1,8 @@
 import db_insert
 import _classes
-
-# if __name__ == '__main__':
-#     db_insert.main()
-    
-
+import create_csv
 
 if __name__ == '__main__':
+    create_csv.create_csv()
+    db_insert.main()
     _classes.clazz()
