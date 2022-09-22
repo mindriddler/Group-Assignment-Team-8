@@ -1,6 +1,6 @@
 import db_init
 
-def print_one(connection):   
+def go_fetch_all(connection):   
     cursor = connection.cursor()
     result = cursor.execute('select * from persons;').fetchall()
     return result
@@ -42,26 +42,14 @@ class Person:
     def people_print(connection):
         try:
             
-            result1 = print_one(connection)
-            result2 = list(map(list, result1))
-        
-            p2p_1 = result2[0]
-            p2p_2 = result2[1]
-            p2p_3 = result2[2]
-            p2p_4 = result2[3]
-            p2p_5 = result2[4]
+            fetch_all_result = go_fetch_all(connection)
+            lst_of_lst = list(map(list, fetch_all_result))
+            len_of_lst_of_lst = len(lst_of_lst)
             
-            person_1 = Person(p2p_1[1], p2p_1[2], p2p_1[3], p2p_1[4])
-            person_2 = Person(p2p_2[1], p2p_2[2], p2p_2[3], p2p_2[4])
-            person_3 = Person(p2p_3[1], p2p_3[2], p2p_3[3], p2p_3[4])
-            person_4 = Person(p2p_4[1], p2p_4[2], p2p_4[3], p2p_4[4])
-            person_5 = Person(p2p_5[1], p2p_5[2], p2p_5[3], p2p_5[4])
-            
-            print(person_1)
-            print(person_2)
-            print(person_3)
-            print(person_4)
-            print(person_5)
+            for i in range(len_of_lst_of_lst):
+                person = lst_of_lst[i]
+                person_finished = Person(person[1], person[2], person[3], person[4])
+                print(person_finished)
         except IndexError as error:
             print("Woops -", error)
         
