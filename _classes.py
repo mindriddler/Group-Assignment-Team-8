@@ -70,4 +70,4 @@ def clazz():
     with db_init.conn_to_db('db\SQLiteDB.db') as conn:
         db_init.cursor(conn)
         Person.people_print(conn)
-    db_init.close_connection(conn)
+    # db_init.close_connection(conn)

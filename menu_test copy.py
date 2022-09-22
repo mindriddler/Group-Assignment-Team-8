@@ -3,7 +3,7 @@ import sys
 import sqlite3
 from db_init import conn_to_db, cursor, close_connection
 from _classes import getlimitedRows
-from update_address import update_db
+from _functions import update_db
 
 
 class App:
