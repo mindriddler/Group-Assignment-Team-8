@@ -2,6 +2,7 @@ import csv
 import sys
 import sqlite3
 from _classes import clazz
+from update_address import update_db
 
 class Greetings:
     def __init__(self, name):
@@ -11,12 +12,12 @@ class Greetings:
     # I have now made it so instead of writing the code here again, we are now instead
     # calling for the function clazz() directly from the choice menu
     # That means that this function sadly is unnecessary
-    """def list_all_persons(self):
-        sqliteConnection = sqlite3.connect(r"C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\db\SQLiteDB.db")
-        cursor = sqliteConnection.cursor()
-        cursor.execute("SELECT * from persons;")
-        full_list = cursor.fetchall()
-        print(full_list)"""
+    # """def list_all_persons(self):
+    #     sqliteConnection = sqlite3.connect(r"C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\db\SQLiteDB.db")
+    #     cursor = sqliteConnection.cursor()
+    #     cursor.execute("SELECT * from persons;")
+    #     full_list = cursor.fetchall()
+    #     print(full_list)"""
 
     def delete_a_person(self):                                                                                                               ## Delete OK?
         choice2 = input("Who do you want to delete?: ")
@@ -69,7 +70,7 @@ class Menu:
         elif choice == 2:
             self.greeting.delete_a_person()
         elif choice == 3:
-            self.greeting.update_a_persons_address()
+            update_db()
 
     def menu_loop(self):
         self.running = True

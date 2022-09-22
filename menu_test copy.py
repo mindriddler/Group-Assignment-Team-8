@@ -3,6 +3,7 @@ import sys
 import sqlite3
 from db_init import conn_to_db, cursor, close_connection
 from _classes import getlimitedRows
+from update_address import update_db
 
 
 class App:
@@ -67,7 +68,7 @@ class Menu:
         elif choice == 2:
             App().delete_a_person()
         elif choice == 3:
-            App.update_a_persons_address()
+            update_db()
 
     def menu_loop(self):
         self.running = True
