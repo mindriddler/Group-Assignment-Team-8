@@ -28,15 +28,15 @@ This is probably your first slightly larger program, so you will tackle it as a 
 
 ### `Exercise 3` Menu
 
-1. Create a menu with options:
+1. ~~Create a menu with options:~~
    1. ~~Load data from file (Use your solution from Exercise 1)~~
    2. ~~List all persons (select *) (Use your solution from Exercise 2)~~
-      1. EXTRA let the user type a firstname and query the database with that firstname
-      2. EXTRA let the user type a lastname and query the database with that lastname
-      3. EXTRA let the user type a birthdate and query query the database with that birthdate
-      4. EXTRA let the user type an address and query the database with that address
-   3. Delete a person
-   4. EXTRA update a persons address with input from the user
+      1. ~~EXTRA let the user type a firstname and query the database with that firstname~~
+      2. ~~EXTRA let the user type a lastname and query the database with that lastname~~
+      3. ~~EXTRA let the user type a birthdate and query query the database with that birthdate~~
+      4. ~~EXTRA let the user type an address and query the database with that address~~
+   3. ~~Delete a person~~
+   4. ~~EXTRA update a persons address with input from the user~~
 
 ### EXTRA EXTRA Add another table
 
