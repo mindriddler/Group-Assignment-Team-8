@@ -4,25 +4,6 @@ def go_fetch_all(connection):
     cursor = connection.cursor()
     result = cursor.execute('select * from persons;').fetchall()
     return result
-    
-# This code is not used for anything, but dont delete, i like how its implemented and i want to keep it
-# for future reference
-def getlimitedRows(connection, size):
-    
-        cursor = connection.cursor()
-
-        sqlite_select_query = 'SELECT * from persons'
-        cursor.execute(sqlite_select_query)
-        records = cursor.fetchmany(size)
-        print("Fetching a total of", size,"rows")
-        print("Printing each row")
-        for row in records:
-            print("\n")
-            print("Firstname:", row[1])
-            print("Lastname:", row[2])
-            print("Birthdate:", row[3])
-            print("Address:", row[4])
-            print("\n")
 
 class Person:
     
