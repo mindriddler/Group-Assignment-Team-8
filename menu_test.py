@@ -15,9 +15,6 @@ class Menu:
 4: 'Quit'                               # Works as intended
 """
 
-
-
-
     def __init__(self):
         pass
 
