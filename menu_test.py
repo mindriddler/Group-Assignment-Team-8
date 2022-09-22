@@ -1,6 +1,6 @@
 import sys
 from _classes import clazz
-from update_address import update_db, delete_a_person
+from _functions import update_db, delete_a_person
 from db_init import close_connection, conn_to_db
 
 class Menu:
