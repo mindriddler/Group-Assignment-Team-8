@@ -1,5 +1,11 @@
 # GroupAssignmentDevOps22
 
+# TEAM 8
+# Fredrik Magnusson
+# Martin Alfredson
+# Timmy Elf
+# Hugo Göransson
+
 # Group Exercise Lesson 11
 
 ## Instructions

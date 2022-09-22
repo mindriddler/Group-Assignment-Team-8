@@ -1,7 +1,7 @@
 import db_init
 import _classes
 import create_csv
-
+import menu_test
 
 # This will first create the csv file then it initiates the database
 # when its comeplete the _classes.clazz() will be gone and replaces with the menu
@@ -10,5 +10,5 @@ import create_csv
 if __name__ == '__main__':
     create_csv.create_csv()
     db_init.main()
-    _classes.clazz()
+    menu_test.menu_main()
     

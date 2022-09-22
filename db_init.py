@@ -61,7 +61,6 @@ def main():
         cursor(conn)
         create_table(conn)
         insert_to_db(conn)
-    close_connection(conn)
     
     
 
