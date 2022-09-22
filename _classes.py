@@ -36,9 +36,6 @@ class Person:
     def __str__(self):
         return f"{self.firstname} {self.lastname} is born {self.birthdate} and lives on {self.address}"
 
-    # This code is absolut GARBAGE.... But its right now 01:34 and i need to go to bed.
-    # Will try to find a way to make it look better, but im not sure.. 
-    # It works now as it should anyway and it looks better than before.
     def people_print(connection):
         try:
             
