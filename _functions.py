@@ -1,5 +1,6 @@
 # Function to update address by quary firstname
 import sqlite3
+from unittest import registerResult
 
 def update_db():
     # Choice of firstname to update (casesensetive hence .title())
@@ -32,19 +33,37 @@ def delete_a_person():
         sqliteConnection.commit()
         print("Entry Deleted")
         cursor.close()
-    
     except AttributeError:
             print("No object to delete")
             
             
-# def quary_persons_with_():
-#     search_choice = input("What do you want to search by? Enter either firstname, lastname, address or birthdate").lower()
+def quary_persons_with_():
+    search_choice = input("What do you want to search by? Enter either firstname, lastname, address or birthdate: ").title()
     
-#     try:
-#         conn = sqlite3.connect('db\SQLiteDB.db')
-#         cursor = conn.cursor()
-#         if search_choice == "firstname":
-#             search_quary = ("SELECT * FROM Intuse WHERE firstname = ?")
-#             cursor.execute(search_quary, (search_choice, ))
-#     except AttributeError:
-#         print("something went wrong")
+    conn = sqlite3.connect('db\SQLiteDB.db')
+    cursor = conn.cursor()
+    if search_choice == "Firstname":
+        firstname_choice = input("Please enter the firstname of the person: ").title()
+        search_quary = ("SELECT * FROM persons WHERE firstname = ?")
+        result = cursor.execute(search_quary, (firstname_choice, )).fetchone()
+        print(result)
+    elif search_choice == "Lastname":
+        lastname_choice = input("Please enter the lastname of the person: ").title()
+        search_quary = ("SELECT * FROM persons WHERE lastname = ?")
+        result = cursor.execute(search_quary, (lastname_choice, )).fetchone()
+        print(result)
+    elif search_choice == "Address":
+        address_choice = input("Please enter the address of the person: ").title()
+        search_quary = ("SELECT * FROM persons WHERE address = ?")
+        result = cursor.execute(search_quary, (address_choice, )).fetchone()
+        print(result)
+    elif search_choice == "Birthdate":
+        try:
+            birthdate_choice = str(input("Please enter the birthdate of the person formated as such; 'YY-MM-DD': "))
+            search_quary = ("SELECT * FROM persons WHERE birthdate = ?")
+            result = cursor.execute(search_quary, (birthdate_choice, )).fetchone()
+            print(result)
+        except None:
+            print("Something went wrong")
+    else:
+        print("Your choice did not make any sense for us, please try again.")
