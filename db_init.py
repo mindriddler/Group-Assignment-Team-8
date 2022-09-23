@@ -5,8 +5,12 @@ import csv
 # Path to csv file. Important to write it as C:\Users\Fredrik\Desktop\Repos\Nackademin\Programmering_Systemering\GroupAssignmentDevOps22\data\persons.csv" 
 # Otherwise it might not work. You will need to specify your path to your copy of the file ofcourse
 def file_input():
-    file_path = input("Please enter the file path: ") 
-    return file_path
+    while True:
+        try:
+            file_path = input("Please enter the file path: ") 
+            return file_path
+        except ValueError:
+            print("Not a valid input, try again")
 
 def conn_to_db(filename):
     return sqlite3.connect(filename)
@@ -20,10 +24,16 @@ def cursor(connection):
 def import_csv_file():  
     # Import csv and extract data, this is where we need to start. 
     # Basicly open up the CSV file and importing the raw text into the DB
-    with open(file_input(), 'r', encoding='UTF-8', newline='') as fin:
-        dict_reader = csv.DictReader(fin)
-        persons = [(i['id'], i['Firstname'], i['Lastname'], i["Birthdate"], i["Address"]) for i in dict_reader]
-        return persons
+    while True:
+        try:
+            with open(file_input(), 'r', encoding='UTF-8', newline='') as fin:
+                dict_reader = csv.DictReader(fin)
+                persons = [(i['id'], i['Firstname'], i['Lastname'], i["Birthdate"], i["Address"]) for i in dict_reader]
+                return persons
+        except FileNotFoundError:
+            print("Not a valid path, try again")
+        except PermissionError:
+            print("Not a valid path, try again")
             
 def create_table(connection):
     # Remove comment to create table, but after the table is created, comment this line back

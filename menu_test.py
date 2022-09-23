@@ -27,7 +27,10 @@ class Menu:
         pass
 
     def user_input(self):
-        return int(input("Enter your choice: "))
+        try:
+            return int(input("Enter your choice: "))
+        except ValueError:
+            print("Invaild input, returning to main menu")
 
     def menu_choice(self, choice):
         if choice == 4:
