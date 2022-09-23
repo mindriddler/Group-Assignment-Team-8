@@ -1,6 +1,6 @@
-id,Firstname,Lastname,Birthdate,Address
-1,Pelle,Svensson,94-02-15,Lillgatan 4
-2,Nina,Bengtsson,99-02-02,Storgatan 4
-3,Nisse,Svensson,67-04-12,Bergsvägen 11
-4,Johan,Persson,94-07-15,Inteckningsvägen 1
-5,Karl,Nilsson,84-02-27,Sedelvägen 5
+Firstname,Lastname,Birthdate,Address,Fullname
+Pelle,Svensson,94-02-15,Lillgatan 4,Pelle Svensson
+Nina,Bengtsson,99-02-02,Storgatan 4,Nina Bengtsson
+Nisse,Svensson,67-04-12,Bergsvägen 11,Nisse Svensson
+Johan,Persson,94-07-15,Inteckningsvägen 1,Johan Persson
+Karl,Nilsson,84-02-27,Sedelvägen 5,Karl Nilsson

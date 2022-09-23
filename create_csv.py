@@ -1,41 +1,43 @@
 import csv
 
 persons = [
-    {
-        "id": 1,
+        {
         "Firstname": "Pelle",
         "Lastname": "Svensson",
         "Birthdate": "94-02-15",
-        "Address": "Lillgatan 4"
+        "Address": "Lillgatan 4",
+        "Fullname": "Pelle Svensson"
     },
         {
-        "id": 2,
         "Firstname": "Nina",
         "Lastname": "Bengtsson",
         "Birthdate": "99-02-02",
-        "Address": "Storgatan 4"
+        "Address": "Storgatan 4",
+        "Fullname": "Nina Bengtsson"
     },
         {
-        "id": 3,
         "Firstname": "Nisse",
         "Lastname": "Svensson",
         "Birthdate": "67-04-12",
-        "Address": "Bergsvägen 11"
+        "Address": "Bergsvägen 11",
+        "Fullname": "Nisse Svensson"
     },
         {
-        "id": 4,
         "Firstname": "Johan",
         "Lastname": "Persson",
         "Birthdate": "94-07-15",
-        "Address": "Inteckningsvägen 1"
+        "Address": "Inteckningsvägen 1",
+        "Fullname": "Johan Persson"
     },
         {
-        "id": 5,
         "Firstname": "Karl",
         "Lastname": "Nilsson",
         "Birthdate": "84-02-27",
-        "Address": "Sedelvägen 5"
+        "Address": "Sedelvägen 5",
+        "Fullname": "Karl Nilsson"
     },    
+    
+        
 ] 
 def create_csv():
     with open('data\persons.csv', 'w', encoding='UTF-8', newline='') as f:
