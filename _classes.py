@@ -1,12 +1,6 @@
 import sqlite3
-from _functions import query_vehicle_with_
+from _functions import query_vehicle_with_, go_fetch_all
 
-
-def go_fetch_all():   
-    conn = sqlite3.connect('db\SQLiteDB.db')
-    cursor = conn.cursor()
-    result = cursor.execute('select * from persons;').fetchall()
-    return result
 
 class Person:
     

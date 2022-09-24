@@ -5,6 +5,12 @@ from msvcrt import getch
 
 #################################### FUNCTIONS FOR PERSONS ####################################
 
+def go_fetch_all():   
+    conn = sqlite3.connect('db\SQLiteDB.db')
+    cursor = conn.cursor()
+    result = cursor.execute('select * from persons;').fetchall()
+    return result
+
 def update_db():
     # Choice of firstname to update (casesensetive hence .title())
     update_person = input("Insert fullname of the person you want to change address for: ").title()
