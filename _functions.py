@@ -127,7 +127,7 @@ def query_vehicle_with_():
     result = cursor.fetchall()
     return result
 
-# Function for all "press any key to continue"
+#################################### FUNCTION WAIT FOR KEYPRESS ####################################
 def wait():
     print("\nPress any key to continue ...", end="")
     getch()
