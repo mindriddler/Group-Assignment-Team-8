@@ -1,5 +1,6 @@
 # Function to update address by quary firstname
 import sqlite3
+from msvcrt import getch
 
 
 #################################### FUNCTIONS FOR PERSONS ####################################
@@ -43,28 +44,31 @@ def quary_persons_with_():
     
     conn = sqlite3.connect('db\SQLiteDB.db')
     cursor = conn.cursor()
-    if search_choice == "Firstname":
-        firstname_choice = input("Please enter the firstname of the person: ").title()
-        search_quary = ("SELECT * FROM persons WHERE firstname = ?")
-        result = cursor.execute(search_quary, (firstname_choice, )).fetchone()
-        print(result[0:4])
-    elif search_choice == "Lastname":
-        lastname_choice = input("Please enter the lastname of the person: ").title()
-        search_quary = ("SELECT * FROM persons WHERE lastname = ?")
-        result = cursor.execute(search_quary, (lastname_choice, )).fetchone()
-        print(result[0:4])
-    elif search_choice == "Address":
-        address_choice = input("Please enter the address of the person: ").title()
-        search_quary = ("SELECT * FROM persons WHERE address = ?")
-        result = cursor.execute(search_quary, (address_choice, )).fetchone()
-        print(result[0:4])
-    elif search_choice == "Birthdate":
-        birthdate_choice = str(input("Please enter the birthdate of the person formated as such; 'YY-MM-DD': "))
-        search_quary = ("SELECT * FROM persons WHERE birthdate = ?")
-        result = cursor.execute(search_quary, (birthdate_choice, )).fetchone()
-        print(result[0:4])
-    else:
-        print("Your choice did not make any sense for us, please try again.")
+    try:
+        if search_choice == "Firstname":
+            firstname_choice = input("Please enter the firstname of the person: ").title()
+            search_quary = ("SELECT * FROM persons WHERE firstname = ?")
+            result = cursor.execute(search_quary, (firstname_choice, )).fetchone()
+            print(result[0:4])
+        elif search_choice == "Lastname":
+            lastname_choice = input("Please enter the lastname of the person: ").title()
+            search_quary = ("SELECT * FROM persons WHERE lastname = ?")
+            result = cursor.execute(search_quary, (lastname_choice, )).fetchone()
+            print(result[0:4])
+        elif search_choice == "Address":
+            address_choice = input("Please enter the address of the person: ").title()
+            search_quary = ("SELECT * FROM persons WHERE address = ?")
+            result = cursor.execute(search_quary, (address_choice, )).fetchone()
+            print(result[0:4])
+        elif search_choice == "Birthdate":
+            birthdate_choice = str(input("Please enter the birthdate of the person formated as such; 'YY-MM-DD': "))
+            search_quary = ("SELECT * FROM persons WHERE birthdate = ?")
+            result = cursor.execute(search_quary, (birthdate_choice, )).fetchone()
+            print(result[0:4])
+        else:
+            print("Your choice did not make any sense for us, please try again.")
+    except TypeError:
+        print("Entry dosn't exist in database.")
         
         
 #################################### FUNCTIONS FOR VEHICLES ####################################
@@ -122,3 +126,8 @@ def query_vehicle_with_():
     cursor.execute(sql)
     result = cursor.fetchall()
     return result
+
+# Function for all "press any key to continue"
+def wait():
+    print("\nPress any key to continue ...", end="")
+    getch()
