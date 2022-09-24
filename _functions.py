@@ -24,12 +24,12 @@ def update_db():
         
 
 def delete_a_person():                                                                                                             
-    delete_choice = input("Who do you want to delete?: ").title()
+    delete_choice = input("Please specify the fullname of the entry you want to delete: ").title()
     
     try:
         sqliteConnection = sqlite3.connect('db\SQLiteDB.db')
         cursor = sqliteConnection.cursor()
-        delete_query = ("DELETE from persons WHERE firstname = ?")
+        delete_query = ("DELETE from persons WHERE fullname = ?")
         cursor.execute(delete_query, (delete_choice, ))
         sqliteConnection.commit()
         print("Entry Deleted")
@@ -38,7 +38,7 @@ def delete_a_person():
             print("No object to delete")
             
             
-def quary_persons_with_():
+def query_persons_with_():
     search_choice = input("What do you want to search by? Enter either firstname, lastname, address or birthdate: ").title()
     
     conn = sqlite3.connect('db\SQLiteDB.db')
@@ -99,7 +99,7 @@ def add_vehicles():
     vehicle_owner = input("Enter the vehicles owner(both firstname and lastname):  ").title()
     
     conn.execute('CREATE TABLE IF NOT EXISTS vehicles (manufacturer, model, color, regnr, owner, CONSTRAINT regnr_unique UNIQUE (regnr));')
-    conn.execute('INSERT OR REPLACE INTO vehicles (manufacturer, model, color, regnr, owner) VALUES (?, ?, ?, ?, ?);', (vehicle_manu, vehicle_model, vehicle_color, vehicle_regnr, vehicle_owner, ))
+    conn.execute('INSERT OR REPLACE INTO vehicles (manufacturer, model, color, regnr, owner) VALUES (?, ?, ?, ?, ?);', (vehicle_manu, vehicle_model, vehicle_color, vehicle_regnr, vehicle_owner,))
     conn.commit()
     connect_to_db().close()
     print("Entry created.")
