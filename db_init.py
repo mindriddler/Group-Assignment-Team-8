@@ -6,7 +6,7 @@ def file_input():
     from menu_test import Menu
     file_path = input("Please enter the file path: ")
     if file_path == 'b':
-        print("Returning to main menu")
+        print("Returning to main menu.")
         Menu().menu_loop()
     return file_path
 
