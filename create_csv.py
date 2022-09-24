@@ -39,6 +39,9 @@ persons = [
     
         
 ] 
+
+
+# creating out csv file 
 def create_csv():
     with open('data\persons.csv', 'w', encoding='UTF-8', newline='') as f:
         # writer = csv.writer(csvarchive)
