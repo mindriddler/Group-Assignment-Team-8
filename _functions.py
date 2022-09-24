@@ -7,7 +7,7 @@ from msvcrt import getch
 
 def update_db():
     # Choice of firstname to update (casesensetive hence .title())
-    update_person = input("Insert firstname of the person you want to change address for: ").title()
+    update_person = input("Insert fullname of the person you want to change address for: ").title()
 
     # Choice of new address
     update_address = input("Insert new addres: ").title()
@@ -15,7 +15,7 @@ def update_db():
     try:
         sqliteConnection = sqlite3.connect('db\SQLiteDB.db')
         cursor = sqliteConnection.cursor()
-        update_quary = ("UPDATE persons SET address = ? WHERE firstname= ?")
+        update_quary = ("UPDATE persons SET address = ? WHERE fullname = ?")
         cursor.execute(update_quary, (update_address, update_person))
         sqliteConnection.commit()
         print("Address updated")
