@@ -1,7 +1,8 @@
-import sqlite3
 from _functions import query_vehicle_with_, go_fetch_all
 
-
+# Person class.
+# This will call a functuin that initiate a query and a fetchall from the database whic then get back here, remade from tuples to list and then iterated over and over based on how many entrys the fetchall returns.
+# each round in the for loop will create a object that gets printed to the terminal
 class Person:
     
     def __init__(self, firstname, lastname, birthdate, address):
@@ -28,7 +29,10 @@ class Person:
             print("Woops -", error)
             
             
-            
+# vehicle class.
+# This is abit different.
+# instead of querying and fetchall, this will initiate a function that looks for similarities between vehicles table and persons table and
+# the returned result from that fetch from the database will get printed, if the query finds no matching results then nothing get printed         
 class Car_owned:
     
     def __init__(self, manufacturer, model, color, regnr, owner):
