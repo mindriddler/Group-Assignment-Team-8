@@ -1,6 +1,6 @@
 import sqlite3
 from _classes import Person, Car_owned
-from _functions import update_db, delete_a_person, quary_persons_with_, add_vehicles, list_all_vehicles, delete_vehicle 
+from _functions import update_db, delete_a_person, quary_persons_with_, add_vehicles, list_all_vehicles, delete_vehicle, wait
 from db_init import close_connection, conn_to_db, insert_to_db
 
 class Menu:
@@ -56,6 +56,7 @@ Select what table to work with
             self.running = False
             close_connection(conn_to_db('db\SQLiteDB.db'))
             print("Exiting the program. Have a nice day.")
+            exit()
         elif choice == 3:
             insert_to_db(sqlite3.connect('db\SQLiteDB.db'))
         elif choice == 1:
@@ -75,14 +76,17 @@ Select what table to work with
                 add_vehicles()
             elif choice_2 == 2:
                 Car_owned.car_print()
+                wait()
             elif choice_2 == 1: 
                 list_all_vehicles()
+                wait()
             elif choice_2 == 4: 
                 delete_vehicle()
             elif choice_2 == 9:
                 self.running = False
                 close_connection(conn_to_db('db\SQLiteDB.db'))
                 print("Exiting the program. Have a nice day.")
+                exit()
             elif choice_2 == 8:
                 self.menu_loop()
         except sqlite3.OperationalError as error_notable:
@@ -92,8 +96,10 @@ Select what table to work with
         try:    
             if choice_2 == 1:
                 Person.people_print()
+                wait()
             elif choice_2 == 2:
                 quary_persons_with_()
+                wait()
             elif choice_2 == 3:
                 update_db()
             elif choice_2 == 4:
@@ -104,6 +110,7 @@ Select what table to work with
                 self.running = False
                 close_connection(conn_to_db('db\SQLiteDB.db'))
                 print("Exiting the program. Have a nice day.")
+                exit()
         except sqlite3.OperationalError as error_notable:
             print("Something went wrong -", error_notable)
 
