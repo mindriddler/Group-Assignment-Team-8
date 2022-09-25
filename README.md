@@ -44,6 +44,6 @@ Create another table, i.e Vehicles, Friends or Transactions. Make sure the conte
 would have some relation to Persons defined in the other table, e.g. a vehicle is owned
 by a person or a transaction was done by a person.
 
-1. Add it to your menu
-2. Make it possible to add data to the second table
-3. Query the database with a join between Person table and your second table, so you can see the combined results.
+~~1. Add it to your menu~~
+~~2. Make it possible to add data to the second table~~
+~~3. Query the database with a join between Person table and your second table, so you can see the combined results.~~
