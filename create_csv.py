@@ -36,8 +36,7 @@ persons = [
         "Address": "Sedelvägen 5",
         "Fullname": "Karl Nilsson"
     },    
-    
-        
+
 ] 
 
 

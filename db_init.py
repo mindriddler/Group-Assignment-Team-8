@@ -8,6 +8,7 @@ def file_input():
     if file_path == 'b':
         print("Returning to main menu.")
         Menu().menu_loop()
+        quit()
     return file_path
 
 # connection to db
@@ -49,7 +50,7 @@ def close_connection(connection):
         connection.close()
         print('SQLite Connection closed')
 
-     
+
 def main():
     with conn_to_db('db\SQLiteDB.db') as conn:
         print("Connection to SQL open.")

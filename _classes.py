@@ -10,7 +10,7 @@ class Person:
         self.lastname = lastname
         self.birthdate = birthdate
         self.address = address
-     
+
     def __str__(self):
         return f"{self.firstname} {self.lastname} is born {self.birthdate} and lives on {self.address}"
 
@@ -41,7 +41,7 @@ class Car_owned:
         self.color = color
         self.regnr = regnr
         self.owner = owner
-     
+
     def __str__(self):
         return f"The owner of the {self.color} {self.manufacturer} {self.model} with registration number {self.regnr} is {self.owner}"
 

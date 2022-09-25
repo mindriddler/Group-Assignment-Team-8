@@ -15,39 +15,40 @@ def go_fetch_all():
 # function to update a entrys address in the datebase
 def update_db():
     # Choice of firstname to update (casesensetive hence .title())
+    sqliteConnection = sqlite3.connect('db\SQLiteDB.db')
+    cursor = sqliteConnection.cursor()
     update_person = input("Insert fullname of the person you want to change address for: ").title()
-
-    # Choice of new address
-    update_address = input("Insert new addres: ").title()
-
-    try:
-        sqliteConnection = sqlite3.connect('db\SQLiteDB.db')
-        cursor = sqliteConnection.cursor()
-        update_quary = ("UPDATE persons SET address = ? WHERE fullname = ?")
+    cursor.execute("SELECT rowid FROM persons WHERE fullname = ?", (update_person,))
+    data = cursor.fetchall()
+    if len(data) == 0:
+        print("That entry doesn't exist in the database.")
+    else:
+        update_address = input("Insert new addres: ").title()
+        update_quary = ("UPDATE persons SET address = ? WHERE fullname = ?")   
         cursor.execute(update_quary, (update_address, update_person))
         sqliteConnection.commit()
         print("Address updated")
         cursor.close()
-    except AttributeError:
-        print("Something went wrong")
-        
+
 # function to delete a entry in the database based on the fullname of a person
 def delete_a_person():                                                                                                             
     delete_choice = input("Please specify the fullname of the entry you want to delete: ").title()
     
-    try:
-        sqliteConnection = sqlite3.connect('db\SQLiteDB.db')
-        cursor = sqliteConnection.cursor()
+    sqliteConnection = sqlite3.connect('db\SQLiteDB.db')
+    cursor = sqliteConnection.cursor()   
+    cursor.execute("SELECT rowid FROM persons WHERE fullname = ?", (delete_choice,))
+    data = cursor.fetchall()
+    if len(data) == 0:
+        print("That name doesn't exist in the database.")
+    else:
         delete_query = ("DELETE from persons WHERE fullname = ?")
         cursor.execute(delete_query, (delete_choice, ))
         sqliteConnection.commit()
-        print("Entry Deleted")
         cursor.close()
-    except AttributeError:
-            print("No object to delete")
-            
+        print("Entry deleted.")   
 # This function allows the user to search the database and get returned a result that matches thier specifications.
 # if user searches for a specific firstname, then all entrys what that firstname get printed
+# Lift question to Martin regarding fetchone and fetchall when there is specific
 def query_persons_with_():
     search_choice = input("What do you want to search by? Enter either firstname, lastname, address or birthdate: ").title()
     
@@ -75,9 +76,9 @@ def query_persons_with_():
             result = cursor.execute(search_quary, (birthdate_choice, )).fetchone()
             print(result[0:4])
         else:
-            print("Your choice did not make any sense for us, please try again.")
+            print("Sorry, i did not understand your choice. Please try again.")
     except TypeError:
-        print("Entry dosn't exist in database.")
+        print("Entry doesn't exist in database.")
         
         
 #################################### FUNCTIONS FOR VEHICLES ####################################
@@ -112,7 +113,7 @@ def add_vehicles():
         vehicle_model = vehicle_model.upper()
     vehicle_color = input("Enter the vehicles color: ").lower()
     vehicle_regnr = input("Enter the vehicles registration number: ").upper()
-    vehicle_owner = input("Enter the vehicles owner(both firstname and lastname):  ").title()
+    vehicle_owner = input("Enter the vehicles owner(both firstname and lastname): ").title()
     
     conn.execute('CREATE TABLE IF NOT EXISTS vehicles (manufacturer, model, color, regnr, owner, CONSTRAINT regnr_unique UNIQUE (regnr));')
     conn.execute('INSERT OR REPLACE INTO vehicles (manufacturer, model, color, regnr, owner) VALUES (?, ?, ?, ?, ?);', (vehicle_manu, vehicle_model, vehicle_color, vehicle_regnr, vehicle_owner,))

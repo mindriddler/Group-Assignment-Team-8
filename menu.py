@@ -56,7 +56,6 @@ Select what table to work with
             self.running = False
             close_connection(conn_to_db('db\SQLiteDB.db'))
             print("Exiting the program. Have a nice day.")
-            exit()
         elif choice == 3:
             insert_to_db(sqlite3.connect('db\SQLiteDB.db'))
         elif choice == 1:
@@ -86,7 +85,6 @@ Select what table to work with
                 self.running = False
                 close_connection(conn_to_db('db\SQLiteDB.db'))
                 print("Exiting the program. Have a nice day.")
-                exit()
             elif choice_2 == 8:
                 self.menu_loop()
         except sqlite3.OperationalError as error_notable:
@@ -110,11 +108,10 @@ Select what table to work with
                 self.running = False
                 close_connection(conn_to_db('db\SQLiteDB.db'))
                 print("Exiting the program. Have a nice day.")
-                exit()
         except sqlite3.OperationalError as error_notable:
             print("Something went wrong -", error_notable)
 
- 
+
     def menu_loop(self):
         self.running = True
         while self.running:
@@ -122,6 +119,5 @@ Select what table to work with
             choice = self.user_input()
             self.main_menu_choice(choice)
 
-      
 def menu_main():
     Menu().menu_loop()
