@@ -46,6 +46,7 @@ def delete_a_person():
         sqliteConnection.commit()
         cursor.close()
         print("Entry deleted.")   
+
 # This function allows the user to search the database and get returned a result that matches thier specifications.
 # if user searches for a specific firstname, then all entrys what that firstname get printed
 # Lift question to Martin regarding fetchone and fetchall when there is specific

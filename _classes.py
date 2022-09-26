@@ -1,7 +1,7 @@
 from _functions import query_vehicle_with_, go_fetch_all
 
 # Person class.
-# This will call a functuin that initiate a query and a fetchall from the database whic then get back here, remade from tuples to list and then iterated over and over based on how many entrys the fetchall returns.
+# This will call a function that initiate a query and a fetchall from the database which then get back here, remade from tuples to list and then iterated over and over based on how many entrys the fetchall returns.
 # each round in the for loop will create a object that gets printed to the terminal
 class Person:
     
