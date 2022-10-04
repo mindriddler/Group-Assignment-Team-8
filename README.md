@@ -14,7 +14,7 @@ To use the game you will need python 3.10 installed on your computer
 For how to install python 3.10, see instructions at the bottom
 
 ## **Basic program functions:** ##
-- The program will create a database inside the data folder
+- The program will create a database inside the db folder
 - The program will load a json file on demand and create a table called 'persons'
 - You can delete a entry in the database
 - The program can create a second table called 'vehicle' and you can add entrys to it
