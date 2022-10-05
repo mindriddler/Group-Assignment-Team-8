@@ -52,7 +52,7 @@ def close_connection(connection):
 
 
 def main():
-    with conn_to_db('db\SQLiteDB.db') as conn:
+    with conn_to_db('db/SQLiteDB.db') as conn:
         print("Connection to SQL open.")
         cursor(conn)
         create_table(conn)

@@ -54,10 +54,10 @@ Select what table to work with
     def main_menu_choice(self, choice):
         if choice == 9:
             self.running = False
-            close_connection(conn_to_db('db\SQLiteDB.db'))
+            close_connection(conn_to_db('db/SQLiteDB.db'))
             print("Exiting the program. Have a nice day.")
         elif choice == 3:
-            insert_to_db(sqlite3.connect('db\SQLiteDB.db'))
+            insert_to_db(sqlite3.connect('db/SQLiteDB.db'))
         elif choice == 1:
             print(self.PERSON_MENU_TEXT)
             choice_2 = self.user_input()
@@ -83,7 +83,7 @@ Select what table to work with
                 delete_vehicle()
             elif choice_2 == 9:
                 self.running = False
-                close_connection(conn_to_db('db\SQLiteDB.db'))
+                close_connection(conn_to_db('db/SQLiteDB.db'))
                 print("Exiting the program. Have a nice day.")
             elif choice_2 == 8:
                 self.menu_loop()
@@ -106,12 +106,14 @@ Select what table to work with
                 self.menu_loop()
             elif choice_2 == 9:
                 self.running = False
-                close_connection(conn_to_db('db\SQLiteDB.db'))
+                close_connection(conn_to_db('db/SQLiteDB.db'))
                 print("Exiting the program. Have a nice day.")
         except sqlite3.OperationalError as error_notable:
             print("Something went wrong -", error_notable)
 
-
+# M: It's a bit hard to explain, but the menu_loop is called from several different places
+# which may be a buggy way to do it. E.g. a sub-menu could be a sub-loop and you can exit it by breaking
+# or returning from that loop instead of calling the menu loop (you might get "loop inception" :) 
     def menu_loop(self):
         self.running = True
         while self.running:
